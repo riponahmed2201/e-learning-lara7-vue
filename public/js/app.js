@@ -2193,6 +2193,20 @@ __webpack_require__.r(__webpack_exports__);
     getCategoryList: function getCategoryList() {
       return this.$store.getters.categoryList;
     }
+  },
+  methods: {
+    categoryDelete: function categoryDelete(id) {
+      var _this = this;
+
+      axios.get('/categoryDelete/' + id).then(function (response) {
+        _this.$store.dispatch('getCategoryList');
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Category successfully deleted.'
+        });
+      });
+    }
   }
 });
 
@@ -43181,11 +43195,22 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _c("router-link", { attrs: { to: "" } }, [
-                                _c("i", {
-                                  staticClass: "fa fa-trash-alt text-danger"
-                                })
-                              ])
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.categoryDelete(categoryList.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-trash-alt text-danger"
+                                  })
+                                ]
+                              )
                             ],
                             1
                           )

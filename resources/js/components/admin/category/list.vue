@@ -28,7 +28,7 @@
                       <td>
                         <div>
                          <router-link :to="`/edit_category/${categoryList.id}`"> <i class="fa fa-edit text-info"></i> </router-link>
-                          <router-link to=""> <i class="fa fa-trash-alt text-danger"></i> </router-link>
+                          <a @click.prevent="categoryDelete(categoryList.id)"> <i class="fa fa-trash-alt text-danger"></i> </a>
                         </div>
                       </td>
                     </tr>
@@ -63,6 +63,18 @@ export default {
     computed:{
         getCategoryList(){
            return this.$store.getters.categoryList
+        }
+    },
+    methods:{
+        categoryDelete(id){
+            axios.get('/categoryDelete/'+id).then((response)=>{
+                this.$store.dispatch('getCategoryList');
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Category successfully deleted.'
+                })
+            })
         }
     }
 }

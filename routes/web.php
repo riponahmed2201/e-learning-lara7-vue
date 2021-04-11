@@ -32,3 +32,6 @@ Route::get('/categoryEditById/{id}', 'CategoryController@edit')->name('category.
 
 // Route for categoryUpdate
 Route::post('/categoryUpdate/{id}', 'CategoryController@update')->name('category.update');
+
+// Route for categoryDelete
+Route::get('/categoryDelete/{id}', 'CategoryController@destroy')->name('category.destroy');
