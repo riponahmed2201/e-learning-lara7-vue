@@ -26,3 +26,9 @@ Route::post('/categorySave', 'CategoryController@store')->name('category.store')
 
 // Route for categoryList
 Route::get('/categoryList', 'CategoryController@index')->name('category.index');
+
+// Route for categoryEdit
+Route::get('/categoryEditById/{id}', 'CategoryController@edit')->name('category.edit');
+
+// Route for categoryUpdate
+Route::post('/categoryUpdate/{id}', 'CategoryController@update')->name('category.update');

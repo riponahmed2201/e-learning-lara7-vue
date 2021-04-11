@@ -27,7 +27,7 @@
                       <td>{{categoryList.cat_name}}</td>
                       <td>
                         <div>
-                         <router-link to=""> <i class="fa fa-edit text-info"></i> </router-link>
+                         <router-link :to="`/edit_category/${categoryList.id}`"> <i class="fa fa-edit text-info"></i> </router-link>
                           <router-link to=""> <i class="fa fa-trash-alt text-danger"></i> </router-link>
                         </div>
                       </td>

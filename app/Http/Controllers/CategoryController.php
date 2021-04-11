@@ -17,8 +17,7 @@ class CategoryController extends Controller
        $categoryList = Category::all();
        return response()->json([
            'categoryList' => $categoryList,
-            200
-       ]);
+       ],200);
     }
 
     /**
@@ -63,11 +62,12 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+       $categoryEditById = Category::findOrFail($id);
+       return response()->json(['categoryEditById' => $categoryEditById],200);
     }
 
     /**
@@ -75,11 +75,14 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @return string[]
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category,$id)
     {
-        //
+       $categories = Category::findOrFail($id);
+        $categories->cat_name = $request->cat_name;
+        $categories->save();
+        return ['status' => 'success'];
     }
 
     /**
