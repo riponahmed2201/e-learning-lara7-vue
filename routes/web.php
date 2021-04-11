@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route for categorySave
 Route::post('/categorySave', 'CategoryController@store')->name('category.store');
+
+// Route for categoryList
+Route::get('/categoryList', 'CategoryController@index')->name('category.index');
